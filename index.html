@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="DAPO: an Open-Source LLM Reinforcement Learning
-        System at Scale"> <!-- TODO: add some description, visible outside -->
-  <meta name="keywords" content="DAPO, Deepseek-R1, PPO, GRPO, AIME, SIA-Lab, Tsinghua University, ByteDance AlphaSeed"> <!-- TODO: add some keywords for search engine -->
+        content="Seed1.5-Embedding"> <!-- TODO: add some description, visible outside -->
+  <meta name="keywords" content="Seed1.5-Embedding, Embedding, MTEB, BRIGHT, ByteDance Seed"> <!-- TODO: add some keywords for search engine -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DAPO</title>
+  <title>Seed1.5-Embedding</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -21,12 +20,19 @@
     gtag('js', new Date());
 
     gtag('config', 'G-PYVRSFMDRL');
-  </script>
+  </script> -->
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <!-- Replace Prism.js with highlight.js for better markdown-style highlighting -->
+  <link rel="stylesheet" href="./static/css/github.min.css">
+  <script src="./static/js/highlight.min.js"></script>
+  <script src="./static/js/languages/python.min.js"></script>
+
+  <!-- Remove unused fonts, keep only necessary ones -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans"
         rel="stylesheet">
 
+  <!-- Remove unused CSS files -->
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
@@ -35,11 +41,77 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
+  <!-- Remove unused JS files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome_6_7_2.all.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <style>
+    /* 统一使用flex布局控制间距，同时保持原有的宽度限制 */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;  /* 统一设置所有主要部分之间的间距 */
+      max-width: 100%;  /* 确保不会超出父容器 */
+    }
+
+    .title.is-3 {
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .title.is-3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #485fc7, #3e8ed0);
+      border-radius: 2px;
+    }
+
+    /* 移除之前的margin设置 */
+    .hero-body img {
+      margin-bottom: 0 !important;
+    }
+
+    .section-content {
+      margin-bottom: 0;
+    }
+
+    /* 保持原有的容器宽度限制 */
+    .container.is-max-desktop {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 让 footer 高度自适应内容 */
+    .footer {
+      padding-top: max(0.3rem, min(0.5rem, 0.5vh));    /* 稍微增加一点内边距 */
+      padding-bottom: max(0.3rem, min(0.5rem, 0.5vh));
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      min-height: 0;  /* 覆盖 Bulma 的默认最小高度 */
+    }
+
+    .footer .content {
+      margin: 0;
+      padding: 0;  /* 确保没有额外的内边距 */
+      line-height: 1.2;  /* 减小行高 */
+    }
+
+    .footer p {
+      margin: 0;  /* 移除段落的默认边距 */
+    }
+  </style>
+
 </head>
 <body>
 
@@ -51,115 +123,42 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-  <!-- <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a> -->
-
-      <!-- <div class="navbar-item has-dropdown is-hoverable"> -->
-        <!-- <a class="navbar-link">
-          More Research
-        </a> -->
-        <!-- <div class="navbar-dropdown"> -->
-          <!-- <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </div> -->
-
-  <!-- </div> -->
 </nav>
 
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">
-            DAPO: an Open-Source LLM Reinforcement Learning
-            System at Scale
-          </h1> <!-- TODO: fix the title -->
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="">Author 1</a><sup>1,2,3</sup>,</span>
-            <span class="author-block">
-              <a href="">Author 2</a><sup>1,2,3</sup>,</span>
-            <span class="author-block">
-              <a href="">Author 3</a><sup>1,2,3</sup>,
-            </span>
-          </div> -->
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>ByteDance Seed</span>
-            &nbsp;
-            <span class="author-block"><sup>2</sup>Institute for AI Industry Research (AIR), Tsinghua University</span>
-            <span class="author-block"><sup>3</sup>The University of Hong Kong</span>
-            <br>
-            <span class="author-block"><sup>4</sup>SIA-Lab of Tsinghua AIR and ByteDance Seed</span>
-          </div>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">*Full author list in Contributions</span>
-          </div>
-
+<!-- 在logo后面开始，到Usage结束的内容都包在这个div里 -->
+<div class="main-content">
+  <div class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2503.14476"
-                   class="external-link button is-normal is-rounded is-dark"> <!-- TODO: fix pdf link -->
-                  <span class="icon">
-                      <!-- <i class="fas fa-file-pdf"></i> -->
-                      <i class="fa-solid fa-file-pdf" style="color: #ec4646;"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- Arxiv Link. -->
-              <!-- <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> -->
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/BytedTsinghua-SIA/DAPO"
-                   class="external-link button is-normal is-rounded is-dark"> <!-- TODO: fix repo link -->
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
+            <h1 class="title is-1 publication-title">
+              Seed1.5-Embedding
+            </h1> <!-- TODO: fix the title -->
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">ByteDance Seed</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/model/detail?Id=doubao-embedding-large"
+                     class="external-link button is-normal is-rounded">
+                    <span class="icon">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+                    <span>Try on Volcengine</span>
                   </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k"
-                   class="external-link button is-normal is-rounded is-dark"> <!-- TODO: fix dataset link -->
-                  <span class="icon">
-                      <i class="fa-regular fa-database"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-              </span>
-              <!-- Model Link. -->
-              <span class="link-block">
-                <a href="https://huggingface.co/BytedTsinghua-SIA/DAPO-Qwen-32B"
-                   class="external-link button is-normal is-rounded is-dark"> <!-- TODO: fix model link -->
-                  <span class="icon">
-                    <!-- <i class="fa-solid fa-face-smiling-hands"></i> -->
-                    <i class="fa-solid fa-face-smiling-hands" style="color: #FFD43B;"></i>
-                  </span>
-                  <span>Model</span>
-                  </a>
-              </span>
+                </span>
+                
+              </div>
+
+            </div>
+
+            <div class="has-text-centered">
+              <img src="./static/images/logo.jpeg" alt="Seed1.5-Embedding Logo" style="max-width: 80%; border-radius: 15px; margin-bottom: 20px;">
             </div>
 
           </div>
@@ -167,192 +166,431 @@
       </div>
     </div>
   </div>
-</section>
 
-<!-- Teaser -->
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="subtitle has-text-centered">
-        <img src="static/images/puffin.png"/>
-        <span class="dnerf">Puffin-Zero</span> is an open reasoning language model that demonstrates the potential of
-        large-scale RL training from pretrained checkpoints on solving competition-level math problems.
-      </h2>
-      <h2 class="subtitle has-text-centered">
-        <img src="static/images/score.png"/>
-        <span class="dnerf">Puffin-Zero</span> achieves 45.4 points on AIME 2024, a comparable performance to DeepSeek-R1-Zero-
-        Qwen-32B.
-      </h2>
-    </div>
-  </div>
-</section> -->
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Introducing DAPO</h2>
-        <div class="content has-text-justified">
-          <p>
-            We propose the <b>D</b>ecoupled Clip and <b>D</b>ynamic s<b>A</b>mpling <b>P</b>olicy <b>O</b>ptimization (DAPO) algorithm. By making our work publicly available, we provide the broader research community and society with practical access to scalable reinforcement learning, enabling all to benefit from these advancements. Our system is based on the awesome <a href="https://github.com/volcengine/verl">verl</a> framework. Thanks for their great work!
-            Applying DAPO training to Qwen2.5-32B base model proves to outperform the previous state-of-the-art DeepSeek-R1-Zero-Qwen-32B on AIME 2024, achieving <span style="font-weight:900;">50%</span> accuracy with <span style="font-weight: 900;">50%</span> less training steps. 
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="subtitle has-text-centered">
-          <img src="./static/images/score.png"/>
-        </h2>
-        AIME 2024 Performance
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Fully Open-Source -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Fully Open-Source</h2>
-        <div class="content has-text-justified">
-          <p>
-            To benefit the broader research community, we fully open-source the recipe of our RL training, including algorithm details, dataset, verifiers, model weights and infrastructures. We utilize <a href="https://github.com/volcengine/verl">verl</a> to perform DAPO training using the Qwen-32B-Base model from scratch with 128 H20 GPUs. Our open-source experiments were conducted on the Volcano Engine Machine Learning Platform. 
-            We will provide a full reproduction guideline on the Volcano Engine platform 
-            to help users replicate our experiments.
-          </p>
-          <h3 class="title is-4">Datasets</h3>
-          <p>
-            We provide training and validation datasets for DAPO training.
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce Seed1.5-Embedding, a powerful embedding model built on top of our pretrained LLM. It stands out with the following key features:
+            </p>
             <ul>
               <li>
-                Training: <a href="https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k">DAPO-Math-17k</a>, an elaborately curated math dataset. 
+                <strong>Generalist</strong>: Excels in general-purpose embedding tasks, achieving state-of-the-art performance on MTEB benchmark in both Chinese and English.
               </li>
               <li>
-                Validation: <a href="https://huggingface.co/datasets/BytedTsinghua-SIA/AIME-2024">AIME 2024</a> dataset.
+                <strong>Reasoning Expertise</strong>: Demonstrates strong capability in complex query understanding and reasoning, delivering state-of-the-art results on BRIGHT benchmark.
+              </li>
+              <li>
+                <strong>Flexibility</strong>: Supports multiple embedding dimensions — [2048, 1024, 512, 256] — with minimal performance degradation at lower dimensions.
               </li>
             </ul>
-          </p>
-          <h3 class="title is-4">Verifier</h3>
-          <p>
-            We adopt a simple but robust <a href="https://github.com/volcengine/verl/blob/gm-tyx/puffin/main/verl/utils/reward_score/math_dapo.py">rule-based verifier</a> relying on string normalization and matching.
-          </p>
-          <h3 class="title is-4">Training Script</h3>
-          <p>
-            We provide <a href="https://github.com/volcengine/verl/blob/gm-tyx/puffin/main/recipe/dapo/run_dapo_qwen2.5_32b.sh">the out-of-the-box script</a> for DAPO training reproduction.
-          </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Algorithm Insights -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Algorithm Insights</h2>
-        <div class="content has-text-justified">
-          <p>
-            We propose the <b>D</b>ecoupled Clip and <b>D</b>ynamic s<b>A</b>mpling <b>P</b>olicy <b>O</b>ptimization (DAPO) algorithm, which includes several key techniques as below. Detailed analysis and insights can be found in our technical report.
-          </p>
-          <ul>
-            <li>
-              <b>Clip-Higher</b>, which promotes the diversity of the system and avoids entropy collapse. We observe an entropy-collapsing phenomenon in our initial experiments. We propose increasing the upper clip range of the importance sampling ratio in policy gradient loss to mitigate this problem.
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <b>Dynamic Sampling</b>, which improves training efficiency and stability. We propose a strategy that performs dynamic sampling and filters out prompt groups with the accuracy equal to 1 and 0, keeping a consistent number of prompts with effective gradients across batches.
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <b>Token-level Policy Gradient Loss</b>, which is critical in long-CoT RL scenarios.
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <b>Overlong Reward Shaping</b>, which reduces reward noise and stabilizes training.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Contributions</h2>
-        <div class="content has-text-justified">
-          <p>
-            
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-        <div class="content has-text-justified">
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Performance</h2>
           
+          <div class="performance-section">
+            <div style="margin-bottom: 2rem;">
+              <h3 class="title is-5">MTEB_v2 (English)</h3>
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth performance-table">
+                  <thead>
+                    <tr>
+                      <th class="model-column has-text-centered">Model</th>
+                      <th>AVG</th>
+                      <th>Classification</th>
+                      <th>Clustering</th>
+                      <th>Pair Classification</th>
+                      <th>Reranking</th>
+                      <th>Retrieval</th>
+                      <th>STS</th>
+                      <th>Summarization</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="highlight-row">
+                      <td class="has-text-centered"><strong>Seed1.5-Embedding</strong></td>
+                      <td class="best-score"><strong>74.76</strong></td>
+                      <td>89.88</td>
+                      <td class="best-score"><strong>60.83</strong></td>
+                      <td>87.39</td>
+                      <td class="best-score"><strong>50.67</strong></td>
+                      <td class="best-score"><strong>67.45</strong></td>
+                      <td class="best-score"><strong>87.23</strong></td>
+                      <td>36.44</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">CHAIN19</td>
+                      <td>73.97</td>
+                      <td>89.78</td>
+                      <td>58.85</td>
+                      <td>88.67</td>
+                      <td>49.11</td>
+                      <td>66.21</td>
+                      <td>86.12</td>
+                      <td><strong>38.32</strong></td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">gemini-embedding-exp-03-07</td>
+                      <td>73.30</td>
+                      <td>90.05</td>
+                      <td>59.39</td>
+                      <td>87.70</td>
+                      <td>48.59</td>
+                      <td>64.35</td>
+                      <td>85.29</td>
+                      <td>38.28</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">jasper-en-vision-language-v1</td>
+                      <td>71.41</td>
+                      <td><strong>90.27</strong></td>
+                      <td>60.52</td>
+                      <td>88.14</td>
+                      <td>50.00</td>
+                      <td>56.05</td>
+                      <td>84.37</td>
+                      <td>37.19</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">NV-Embed-v2</td>
+                      <td>69.81</td>
+                      <td>87.19</td>
+                      <td>47.66</td>
+                      <td><strong>88.69</strong></td>
+                      <td>49.61</td>
+                      <td>62.84</td>
+                      <td>83.82</td>
+                      <td>35.21</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">Linq-Embed-Mistral</td>
+                      <td>69.80</td>
+                      <td>83.00</td>
+                      <td>54.07</td>
+                      <td>88.44</td>
+                      <td>49.44</td>
+                      <td>60.14</td>
+                      <td>84.69</td>
+                      <td>37.26</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <h3 class="title is-5">C-MTEB (Chinese)</h3>
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth performance-table">
+                  <thead>
+                    <tr>
+                      <th class="model-column has-text-centered">Model</th>
+                      <th>AVG</th>
+                      <th>Classification</th>
+                      <th>Clustering</th>
+                      <th>Pair Classification</th>
+                      <th>Reranking</th>
+                      <th>Retrieval</th>
+                      <th>STS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="highlight-row">
+                      <td class="has-text-centered"><strong>Seed1.5-Embedding</strong></td>
+                      <td class="best-score"><strong>74.87</strong></td>
+                      <td class="best-score"><strong>79.37</strong></td>
+                      <td class="best-score"><strong>71.11</strong></td>
+                      <td>89.57</td>
+                      <td>70.14</td>
+                      <td class="best-score"><strong>79.33</strong></td>
+                      <td class="best-score"><strong>66.56</strong></td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">Conan-embedding-v2</td>
+                      <td>74.24</td>
+                      <td>76.47</td>
+                      <td>68.84</td>
+                      <td><strong>92.44</strong></td>
+                      <td><strong>74.41</strong></td>
+                      <td>78.31</td>
+                      <td>65.48</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">Conan-embedding-v1</td>
+                      <td>72.50</td>
+                      <td>76.77</td>
+                      <td>66.33</td>
+                      <td>91.66</td>
+                      <td>72.76</td>
+                      <td>76.67</td>
+                      <td>63.67</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">xiaobu-embedding-v2</td>
+                      <td>72.36</td>
+                      <td>76.53</td>
+                      <td>65.17</td>
+                      <td>91.87</td>
+                      <td>72.58</td>
+                      <td>76.50</td>
+                      <td>64.18</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">gte-Qwen2-7B-instruct</td>
+                      <td>71.62</td>
+                      <td>75.77</td>
+                      <td>66.06</td>
+                      <td>87.48</td>
+                      <td>68.92</td>
+                      <td>75.71</td>
+                      <td>65.20</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">bge-multilingual-gemma2</td>
+                      <td>67.64</td>
+                      <td>75.31</td>
+                      <td>59.30</td>
+                      <td>86.67</td>
+                      <td>68.28</td>
+                      <td>73.73</td>
+                      <td>55.19</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="title is-5">BRIGHT</h3>
+              <div class="table-container" style="margin-bottom: 1rem;">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth performance-table">
+                  <thead>
+                    <tr>
+                      <th class="model-column has-text-centered">Model</th>
+                      <th>AVG</th>
+                      <th>Bio.</th>
+                      <th>Earth.</th>
+                      <th>Econ.</th>
+                      <th>Psy.</th>
+                      <th>Rob.</th>
+                      <th>Stack.</th>
+                      <th>Sus.</th>
+                      <th>Leet.</th>
+                      <th>Pony</th>
+                      <th>AoPS</th>
+                      <th>TheoQ.</th>
+                      <th>TheoT.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="highlight-row">
+                      <td class="has-text-centered"><strong>Seed1.5-Embedding</strong></td>
+                      <td class="best-score"><strong>27.2</strong></td>
+                      <td class="best-score"><strong>34.8</strong></td>
+                      <td class="best-score"><strong>46.9</strong></td>
+                      <td class="best-score"><strong>23.4</strong></td>
+                      <td class="best-score"><strong>31.6</strong></td>
+                      <td class="best-score"><strong>19.1</strong></td>
+                      <td class="best-score"><strong>25.4</strong></td>
+                      <td class="best-score"><strong>21.0</strong></td>
+                      <td class="best-score"><strong>43.2</strong></td>
+                      <td>4.9</td>
+                      <td>12.2</td>
+                      <td class="best-score"><strong>33.3</strong></td>
+                      <td>30.5</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">ReasonIR-8B</td>
+                      <td>24.4</td>
+                      <td>26.2</td>
+                      <td>31.4</td>
+                      <td>23.3</td>
+                      <td>30.0</td>
+                      <td>18.0</td>
+                      <td>23.9</td>
+                      <td>20.5</td>
+                      <td>35.0</td>
+                      <td>10.5</td>
+                      <td>14.7</td>
+                      <td>31.9</td>
+                      <td>27.2</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">gte-Qwen2-7B</td>
+                      <td>22.5</td>
+                      <td>30.6</td>
+                      <td>36.4</td>
+                      <td>17.8</td>
+                      <td>24.6</td>
+                      <td>13.2</td>
+                      <td>22.2</td>
+                      <td>14.8</td>
+                      <td>25.5</td>
+                      <td>9.9</td>
+                      <td><strong>14.4</strong></td>
+                      <td>27.8</td>
+                      <td><strong>32.9</strong></td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">GritLM</td>
+                      <td>21.0</td>
+                      <td>24.8</td>
+                      <td>32.3</td>
+                      <td>18.9</td>
+                      <td>19.8</td>
+                      <td>17.1</td>
+                      <td>13.6</td>
+                      <td>17.8</td>
+                      <td>29.9</td>
+                      <td><strong>22.0</strong></td>
+                      <td>8.8</td>
+                      <td>25.2</td>
+                      <td>21.2</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">text-embedding-004</td>
+                      <td>20.0</td>
+                      <td>22.7</td>
+                      <td>34.8</td>
+                      <td>19.6</td>
+                      <td>27.8</td>
+                      <td>15.7</td>
+                      <td>20.1</td>
+                      <td>17.1</td>
+                      <td>29.6</td>
+                      <td>3.6</td>
+                      <td>9.3</td>
+                      <td>23.8</td>
+                      <td>15.9</td>
+                    </tr>
+                    <tr>
+                      <td class="has-text-centered">SFR-Embedding-Mistral</td>
+                      <td>18.3</td>
+                      <td>19.1</td>
+                      <td>26.7</td>
+                      <td>17.8</td>
+                      <td>19.0</td>
+                      <td>16.3</td>
+                      <td>14.4</td>
+                      <td>19.2</td>
+                      <td>27.4</td>
+                      <td>2.0</td>
+                      <td>7.4</td>
+                      <td>24.3</td>
+                      <td>26.0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section> -->
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Usage</h2>
+          <div class="content has-text-left">
+            <div class="code-container">
+              <button class="copy-button" onclick="copyCode(this)">Copy</button>
+              <pre><code class="language-python">import os
+import torch
+from volcenginesdkarkruntime import Ark
+from typing import Optional, List
+
+def encode(
+    client, inputs: List[str], is_query: bool = False, mrl_dim: Optional[int] = None
+):
+    if is_query:
+        # use instruction for optimal performance, feel free to tune this instruction for different tasks
+        # to reproduce MTEB results, refer to https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py for detailed instructions per task
+        inputs = [
+            f"Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: {x}"
+            for x in inputs
+        ]
+    resp = client.embeddings.create(
+        model="doubao-embedding-large-text-250515",
+        input=inputs,
+        encoding_format="float",
+    )
+    embedding = torch.tensor([d.embedding for d in resp.data], dtype=torch.bfloat16)
+    if mrl_dim is not None:
+        assert mrl_dim in [2048, 1024, 512, 256]
+        embedding = embedding[:, :mrl_dim]
+    # normalize to compute cosine sim
+    embedding = torch.nn.functional.normalize(embedding, dim=1, p=2).float().numpy()
+    return embedding
 
 
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{2025puffinzero,
-                author    = {Author 1, Author 2, Author 3},
-                title     = {Puffin-Zero},
-                journal   = {Arxiv},
-                year      = {2025},
-              }</code></pre>
+# gets API Key from environment variable ARK_API_KEY
+client = Ark(
+    api_key=os.getenv("ARK_API_KEY"),
+)
+
+print("----- embeddings -----")
+inputs = ["The sky is blue and the grass is green"]
+embedding = encode(client, inputs, is_query=False, mrl_dim=1024)
+print(embedding)</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section> -->
-
+</div>
 
 <footer class="footer">
-  <div class="container">
+  <div class="container is-max-desktop">
     <div class="content has-text-centered">
-      <!-- <a class="icon-link"
-         href="./static/pdf/dapo_paper.pdf">
-        <i class="fa-solid fa-file-pdf" style="color: #ec4646;"></i>
-      </a> -->
-      <!-- <a class="icon-link" href="" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a> -->
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a> and licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-        </div>
-      </div>
+      <p>
+        This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>.
+      </p>
     </div>
   </div>
 </footer>
+
+<!-- Initialize highlight.js -->
+<script>
+hljs.highlightAll();
+
+// Copy code functionality
+function copyCode(button) {
+    const codeBlock = button.nextElementSibling.querySelector('code');
+    const text = codeBlock.textContent;
+    
+    navigator.clipboard.writeText(text).then(function() {
+        button.textContent = 'Copied!';
+        button.classList.add('copied');
+        
+        setTimeout(function() {
+            button.textContent = 'Copy';
+            button.classList.remove('copied');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Failed to copy: ', err);
+        button.textContent = 'Failed';
+        
+        setTimeout(function() {
+            button.textContent = 'Copy';
+        }, 2000);
+    });
+}
+</script>
 
 </body>
 </html>
