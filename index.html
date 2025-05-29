@@ -8,19 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seed1.5-Embedding</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script> -->
   <script async src="./static/js/tech-mml-chtml.js"></script>
 
   <!-- Replace Prism.js with highlight.js for better markdown-style highlighting -->
@@ -120,30 +107,25 @@
     }
 
     .switch-container {
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
+      width: 80px;
       height: 2.5em;
       background-color: #fff;
       transition: background-color .3s ease-in-out;
-    }
-
-    .switch-container:hover {
-      background-color: #f9f9f9;
+      display: grid;      /* 使用grid布局 */
+      place-items: center; /* 完美居中 */
     }
 
     .switch-label {
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 500;    /* 降低字重，统一中英文显示效果 */
       color: #485fc7;
-      transition: color 0.3s ease;
-      user-select: none;
       cursor: pointer;
+      user-select: none;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;  /* 使用系统字体栈 */
     }
 
-    /* 移除不需要的样式 */
-    .switch, .slider {
-      display: none;
+    .switch-container:hover {
+      background-color: #f9f9f9;
     }
 
     /* 响应式调整 */
@@ -803,10 +785,10 @@ document.head.appendChild(style);
     <h2 class="title is-3">介绍</h2>
     <div class="content has-text-justified">
       <p>
-        我们推出了 Seed1.5-Embedding，一款基于字节跳动预训练大语言模型（Seed1.5）构建的强大的向量表征模型。它具有以下关键特性：
+        我们推出了 Seed1.5-Embedding，一个基于字节跳动预训练大语言模型（Seed1.5）构建的强大的向量表征模型。它具有以下关键特性：
       </p>
       <ul>
-        <li><strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的效果。</li>
+        <li><strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。</li>
         <li><strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的效果。</li>
         <li><strong>灵活性</strong>：支持多种嵌入维度 — [2048, 1024, 512, 256] — 在较低维度下仍保持较好效果。</li>
       </ul>
@@ -915,7 +897,7 @@ document.head.appendChild(style);
                 <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。
               </li>
               <li>
-                <strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的结果。
+                <strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的效果。
               </li>
               <li>
                 <strong>灵活性</strong>：支持多种嵌入维度 — [2048, 1024, 512, 256] — 在较低维度下仍保持较好效果。
