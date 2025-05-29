@@ -142,10 +142,12 @@
 
 <!-- 简化语言切换按钮的 HTML -->
 <div class="language-switcher">
-  <div class="switch-container button is-normal is-rounded">
-    <span class="switch-label lang-en" onclick="switchLanguage('zh')">中文</span>
-    <span class="switch-label lang-zh" style="display: none;" onclick="switchLanguage('en')">English</span>
-  </div>
+  <button class="switch-container button is-normal is-rounded" onclick="switchLanguage('zh')">
+    <span class="switch-label lang-en">中文</span>
+  </button>
+  <button class="switch-container button is-normal is-rounded" style="display: none;" onclick="switchLanguage('en')">
+    <span class="switch-label lang-zh">English</span>
+  </button>
 </div>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -730,6 +732,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function switchLanguage(lang) {
   const mainContent = document.querySelector('.main-content');
+  const enButton = document.querySelector('.switch-container:has(.lang-en)');
+  const zhButton = document.querySelector('.switch-container:has(.lang-zh)');
   
   // 添加淡出效果
   mainContent.style.opacity = '0';
@@ -740,17 +744,33 @@ function switchLanguage(lang) {
       // 切换到中文
       currentLang = 'zh';
       
-      // 隐藏英文内容，显示中文内容
+      // 隐藏英文内容和按钮，显示中文内容和按钮
       document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'block');
+      
+      // 切换按钮显示
+      enButton.style.display = 'none';
+      zhButton.style.display = 'grid';  // 使用grid以保持居中效果
+      
+      // 更新按钮文字
+      zhButton.querySelector('.switch-label').textContent = 'English';
+      enButton.querySelector('.switch-label').textContent = '中文';
       
     } else {
       // 切换到英文
       currentLang = 'en';
       
-      // 隐藏中文内容，显示英文内容
+      // 隐藏中文内容和按钮，显示英文内容和按钮
       document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
+      
+      // 切换按钮显示
+      zhButton.style.display = 'none';
+      enButton.style.display = 'grid';  // 使用grid以保持居中效果
+      
+      // 更新按钮文字
+      enButton.querySelector('.switch-label').textContent = '中文';
+      zhButton.querySelector('.switch-label').textContent = 'English';
     }
     
     // 淡入新内容
