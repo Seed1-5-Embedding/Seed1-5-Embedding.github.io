@@ -234,7 +234,7 @@
               </p>
               <ul>
                 <li>
-                  <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。
+                  <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的效果。
                 </li>
                 <li>
                   <strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的结果。
@@ -624,7 +624,7 @@ def encode(
     client, inputs: List[str], is_query: bool = False, mrl_dim: Optional[int] = None
 ):
     if is_query:
-        # 使用指令以获取最佳性能，可以自由调整指令以适应不同任务
+        # 使用指令以获取最佳效果，可以自由调整指令以适应不同任务
         # 要复现 MTEB 结果，请参考 https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py 获取每个任务的详细指令
         inputs = [
             f"Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: {x}"
@@ -808,7 +808,7 @@ document.head.appendChild(style);
         我们推出了 Seed1.5-Embedding，一个基于字节跳动预训练大语言模型（Seed1.5）构建的强大的向量表征模型。它具有以下关键特性：
       </p>
       <ul>
-        <li><strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。</li>
+        <li><strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的效果。</li>
         <li><strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的效果。</li>
         <li><strong>灵活性</strong>：支持多种嵌入维度 — [2048, 1024, 512, 256] — 在较低维度下仍保持较好效果。</li>
       </ul>
@@ -914,7 +914,7 @@ document.head.appendChild(style);
             </p>
             <ul>
               <li>
-                <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。
+                <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的效果。
               </li>
               <li>
                 <strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的效果。
