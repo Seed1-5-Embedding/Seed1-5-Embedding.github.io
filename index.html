@@ -21,7 +21,7 @@
 
     gtag('config', 'G-PYVRSFMDRL');
   </script> -->
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script async src="./static/js/tech-mml-chtml.js"></script>
 
   <!-- Replace Prism.js with highlight.js for better markdown-style highlighting -->
   <link rel="stylesheet" href="./static/css/github.min.css">
@@ -29,7 +29,7 @@
   <script src="./static/js/languages/python.min.js"></script>
 
   <!-- Remove unused fonts, keep only necessary ones -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans"
+  <link href="./static/css/fonts.css"
         rel="stylesheet">
 
   <!-- Remove unused CSS files -->
@@ -38,11 +38,11 @@
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome_6_7_2.all.css">
   <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        href="./static/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
   <!-- Remove unused JS files -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/jquery.js"></script>
   <script defer src="./static/js/fontawesome_6_7_2.all.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
@@ -110,10 +110,61 @@
     .footer p {
       margin: 0;  /* 移除段落的默认边距 */
     }
+
+    /* 语言切换按钮容器 */
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .switch-container {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      height: 2.5em;
+      background-color: #fff;
+      transition: background-color .3s ease-in-out;
+    }
+
+    .switch-container:hover {
+      background-color: #f9f9f9;
+    }
+
+    .switch-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #485fc7;
+      transition: color 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    /* 移除不需要的样式 */
+    .switch, .slider {
+      display: none;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .language-switcher {
+        top: 12px;
+        right: 12px;
+      }
+    }
   </style>
 
 </head>
 <body>
+
+<!-- 简化语言切换按钮的 HTML -->
+<div class="language-switcher">
+  <div class="switch-container button is-normal is-rounded">
+    <span class="switch-label lang-en" onclick="switchLanguage('zh')">中文</span>
+    <span class="switch-label lang-zh" style="display: none;" onclick="switchLanguage('en')">English</span>
+  </div>
+</div>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -134,27 +185,26 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
               Seed1.5-Embedding
-            </h1> <!-- TODO: fix the title -->
+            </h1>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">ByteDance Seed</span>
+              <span class="author-block lang-en">ByteDance Seed</span>
+              <span class="author-block lang-zh" style="display: none;">字节跳动 Seed</span>
             </div>
 
             <div class="column has-text-centered">
               <div class="publication-links">
-                <!-- PDF Link. -->
                 <span class="link-block">
                   <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/model/detail?Id=doubao-embedding-large"
-                     class="external-link button is-normal is-rounded">
+                     class="external-link button is-normal is-rounded" target="_blank">
                     <span class="icon">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </span>
-                    <span>Try on Volcengine</span>
+                    <span class="lang-en">Try on Volcengine</span>
+                    <span class="lang-zh" style="display: none;">在火山引擎上试用</span>
                   </a>
                 </span>
-                
               </div>
-
             </div>
 
             <div class="has-text-centered">
@@ -171,22 +221,45 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Introduction</h2>
+          <h2 class="title is-3">
+            <span class="lang-en">Introduction</span>
+            <span class="lang-zh" style="display: none;">介绍</span>
+          </h2>
           <div class="content has-text-justified">
-            <p>
-              We introduce Seed1.5-Embedding, a powerful embedding model built on top of our pretrained LLM. It stands out with the following key features:
-            </p>
-            <ul>
-              <li>
-                <strong>Generalist</strong>: Excels in general-purpose embedding tasks, achieving state-of-the-art performance on MTEB benchmark in both Chinese and English.
-              </li>
-              <li>
-                <strong>Reasoning Expertise</strong>: Demonstrates strong capability in complex query understanding and reasoning, delivering state-of-the-art results on BRIGHT benchmark.
-              </li>
-              <li>
-                <strong>Flexibility</strong>: Supports multiple embedding dimensions — [2048, 1024, 512, 256] — with minimal performance degradation at lower dimensions.
-              </li>
-            </ul>
+            <!-- 英文版介绍 -->
+            <div class="lang-en">
+              <p>
+                We introduce Seed1.5-Embedding, a powerful embedding model built on top of our pretrained LLM (Seed1.5). It stands out with the following key features:
+              </p>
+              <ul>
+                <li>
+                  <strong>Generalist</strong>: Excels in general-purpose embedding tasks, achieving state-of-the-art performance on MTEB benchmark in both Chinese and English.
+                </li>
+                <li>
+                  <strong>Reasoning Expertise</strong>: Demonstrates strong capability in complex query understanding and reasoning, delivering state-of-the-art results on BRIGHT benchmark.
+                </li>
+                <li>
+                  <strong>Flexibility</strong>: Supports multiple embedding dimensions — [2048, 1024, 512, 256] — with minimal performance degradation at lower dimensions.
+                </li>
+              </ul>
+            </div>
+            <!-- 中文版介绍 -->
+            <div class="lang-zh" style="display: none;">
+              <p>
+                我们推出了 Seed1.5-Embedding，一个基于字节跳动预训练大语言模型（Seed1.5）构建的强大的向量表征模型。它具有以下关键特性：
+              </p>
+              <ul>
+                <li>
+                  <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。
+                </li>
+                <li>
+                  <strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的结果。
+                </li>
+                <li>
+                  <strong>灵活性</strong>：支持多种嵌入维度 — [2048, 1024, 512, 256] — 在较低维度下仍保持较好效果。
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -197,7 +270,10 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Performance</h2>
+          <h2 class="title is-3">
+            <span class="lang-en">Performance</span>
+            <span class="lang-zh" style="display: none;">效果</span>
+          </h2>
           
           <div class="performance-section">
             <div style="margin-bottom: 2rem;">
@@ -504,11 +580,18 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Usage</h2>
+          <h2 class="title is-3">
+            <span class="lang-en">Usage</span>
+            <span class="lang-zh" style="display: none;">使用方法</span>
+          </h2>
           <div class="content has-text-left">
             <div class="code-container">
-              <button class="copy-button" onclick="copyCode(this)">Copy</button>
-              <pre><code class="language-python">import os
+              <button class="copy-button" onclick="copyCode(this)">
+                <span class="lang-en">Copy</span>
+                <span class="lang-zh" style="display: none;">复制</span>
+              </button>
+              <!-- 英文版代码 -->
+              <pre class="lang-en"><code class="language-python">import os
 import torch
 from volcenginesdkarkruntime import Ark
 from typing import Optional, List
@@ -546,6 +629,46 @@ print("----- embeddings -----")
 inputs = ["The sky is blue and the grass is green"]
 embedding = encode(client, inputs, is_query=False, mrl_dim=1024)
 print(embedding)</code></pre>
+
+              <!-- 中文版代码 -->
+              <pre class="lang-zh" style="display: none;"><code class="language-python">import os
+import torch
+from volcenginesdkarkruntime import Ark
+from typing import Optional, List
+
+def encode(
+    client, inputs: List[str], is_query: bool = False, mrl_dim: Optional[int] = None
+):
+    if is_query:
+        # 使用指令进行最佳性能，可以自由调整指令以适应不同任务
+        # 要复现 MTEB 结果，请参考 https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py 获取每个任务的详细指令
+        inputs = [
+            f"Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: {x}"
+            for x in inputs
+        ]
+    resp = client.embeddings.create(
+        model="doubao-embedding-large-text-250515",
+        input=inputs,
+        encoding_format="float",
+    )
+    embedding = torch.tensor([d.embedding for d in resp.data], dtype=torch.bfloat16)
+    if mrl_dim is not None:
+        assert mrl_dim in [2048, 1024, 512, 256]
+        embedding = embedding[:, :mrl_dim]
+    # normalize to compute cosine sim
+    embedding = torch.nn.functional.normalize(embedding, dim=1, p=2).float().numpy()
+    return embedding
+
+
+# 从环境变量中获取 API Key
+client = Ark(
+    api_key=os.getenv("ARK_API_KEY"),
+)
+
+print("----- embeddings -----")
+inputs = ["The sky is blue and the grass is green"]
+embedding = encode(client, inputs, is_query=False, mrl_dim=1024)
+print(embedding)</code></pre>
             </div>
           </div>
         </div>
@@ -557,8 +680,11 @@ print(embedding)</code></pre>
 <footer class="footer">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
-      <p>
+      <p class="lang-en">
         This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>.
+      </p>
+      <p class="lang-zh" style="display: none;">
+        本网站改编自 <a href="https://nerfies.github.io/">Nerfies</a>。
       </p>
     </div>
   </div>
@@ -570,27 +696,257 @@ hljs.highlightAll();
 
 // Copy code functionality
 function copyCode(button) {
-    const codeBlock = button.nextElementSibling.querySelector('code');
+    const codeBlock = button.parentElement.querySelector(`.lang-${currentLang} code`);
     const text = codeBlock.textContent;
     
     navigator.clipboard.writeText(text).then(function() {
-        button.textContent = 'Copied!';
+        // 更新按钮文本以提供反馈
+        const originalText = button.textContent;
+        if (currentLang === 'en') {
+            button.textContent = 'Copied!';
+        } else {
+            button.textContent = '已复制!';
+        }
         button.classList.add('copied');
         
+        // 2秒后恢复原始文本
         setTimeout(function() {
-            button.textContent = 'Copy';
+            if (currentLang === 'en') {
+                button.textContent = 'Copy';
+            } else {
+                button.textContent = '复制';
+            }
             button.classList.remove('copied');
         }, 2000);
     }).catch(function(err) {
         console.error('Failed to copy: ', err);
-        button.textContent = 'Failed';
+        if (currentLang === 'en') {
+            button.textContent = 'Copy failed';
+        } else {
+            button.textContent = '复制失败';
+        }
         
         setTimeout(function() {
-            button.textContent = 'Copy';
+            if (currentLang === 'en') {
+                button.textContent = 'Copy';
+            } else {
+                button.textContent = '复制';
+            }
         }, 2000);
     });
 }
+
+// Language switching functionality
+let currentLang = 'en';
+let originalContent = null;
+
+// 页面加载完成后保存原始内容
+document.addEventListener('DOMContentLoaded', function() {
+  const mainContent = document.querySelector('.main-content');
+  originalContent = mainContent.innerHTML;
+});
+
+function switchLanguage(lang) {
+  const mainContent = document.querySelector('.main-content');
+  
+  // 添加淡出效果
+  mainContent.style.opacity = '0';
+  mainContent.style.transition = 'opacity 0.3s ease';
+  
+  setTimeout(() => {
+    if (lang === 'zh') {
+      // 切换到中文
+      currentLang = 'zh';
+      
+      // 隐藏英文内容，显示中文内容
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'block');
+      
+    } else {
+      // 切换到英文
+      currentLang = 'en';
+      
+      // 隐藏中文内容，显示英文内容
+      document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
+    }
+    
+    // 淡入新内容
+    setTimeout(() => {
+      mainContent.style.opacity = '1';
+    }, 50);
+    
+  }, 300); // 等待淡出动画完成
+}
+
+// 添加主内容过渡样式
+const style = document.createElement('style');
+style.textContent = `
+  .main-content {
+    transition: opacity 0.3s ease;
+  }
+`;
+document.head.appendChild(style);
 </script>
+
+<!-- 添加一个隐藏的中文内容容器 -->
+<div id="zh-content" style="display: none;">
+  <div class="is-size-5 publication-authors">
+    <span class="author-block">字节跳动 Seed</span>
+  </div>
+  
+  <!-- 中文按钮文本 -->
+  <span id="zh-try-button">在火山引擎上试用</span>
+  
+  <!-- 中文介绍部分 -->
+  <div id="zh-intro">
+    <h2 class="title is-3">介绍</h2>
+    <div class="content has-text-justified">
+      <p>
+        我们推出了 Seed1.5-Embedding，一款基于字节跳动预训练大语言模型（Seed1.5）构建的强大的向量表征模型。它具有以下关键特性：
+      </p>
+      <ul>
+        <li><strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的效果。</li>
+        <li><strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的效果。</li>
+        <li><strong>灵活性</strong>：支持多种嵌入维度 — [2048, 1024, 512, 256] — 在较低维度下仍保持较好效果。</li>
+      </ul>
+    </div>
+  </div>  
+  <!-- 其他中文内容... -->
+</div>
+
+<!-- 在 body 开始处添加两个隐藏的内容容器 -->
+<div id="en-content" style="display: none;">
+  <!-- 英文内容容器 -->
+  <div class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              Seed1.5-Embedding
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">ByteDance Seed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce Seed1.5-Embedding, a powerful embedding model built on top of our pretrained LLM (Seed1.5). It stands out with the following key features:
+            </p>
+            <ul>
+              <li>
+                <strong>Generalist</strong>: Excels in general-purpose embedding tasks, achieving state-of-the-art performance on MTEB benchmark in both Chinese and English.
+              </li>
+              <li>
+                <strong>Reasoning Expertise</strong>: Demonstrates strong capability in complex query understanding and reasoning, delivering state-of-the-art results on BRIGHT benchmark.
+              </li>
+              <li>
+                <strong>Flexibility</strong>: Supports multiple embedding dimensions — [2048, 1024, 512, 256] — with minimal performance degradation at lower dimensions.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Performance</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Usage</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="zh-content" style="display: none;">
+  <!-- 中文内容容器 -->
+  <div class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              Seed1.5-Embedding
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">字节跳动 Seed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">介绍</h2>
+          <div class="content has-text-justified">
+            <p>
+              我们推出了 Seed1.5-Embedding，一个基于字节跳动预训练大语言模型（Seed1.5）构建的强大的向量表征模型。它具有以下关键特性：
+            </p>
+            <ul>
+              <li>
+                <strong>通用性</strong>：在通用表征任务中表现出色，在中英文 MTEB 榜单中均取得了最先进的性能。
+              </li>
+              <li>
+                <strong>推理专长</strong>：在复杂查询理解和推理方面展现强大能力，在 BRIGHT 榜单中取得了最先进的结果。
+              </li>
+              <li>
+                <strong>灵活性</strong>：支持多种嵌入维度 — [2048, 1024, 512, 256] — 在较低维度下仍保持较好效果。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">测评效果</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">使用方法</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
