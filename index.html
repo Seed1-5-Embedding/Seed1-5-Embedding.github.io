@@ -625,7 +625,7 @@ def encode(
 ):
     if is_query:
         # 使用指令以获取最佳效果，可以自由调整指令以适应不同任务
-        # 要复现 MTEB 结果，请参考 https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py 获取每个任务的详细指令
+        # 要复现测评结果，请参考 https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py 获取每个任务的详细指令
         inputs = [
             f"Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: {x}"
             for x in inputs
