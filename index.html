@@ -138,7 +138,7 @@
       padding: 0 20px;   /* 添加两侧内边距 */
     }
 
-    /* 响应式调整 */
+    /* 更新响应式调整 */
     @media screen and (max-width: 768px) {
       .container.is-max-desktop {
         padding: 0 15px;    /* 移动端稍微减小内边距 */
@@ -147,10 +147,12 @@
       .has-text-centered {
         margin: 0;          /* 移除之前的负margin */
         width: 100%;        /* 设置为100%宽度 */
-        padding: 0 15px !important;  /* 添加两侧内边距 */
+        padding: 0 !important;  /* 移除内边距 */
       }
       
       .has-text-centered img {
+        width: 100%;        /* 修改：移动端图片宽度设为100% */
+        margin: 0 auto;     /* 水平居中 */
         border-radius: 10px;  /* 移动端稍微减小圆角 */
       }
     }
