@@ -178,6 +178,49 @@
       margin-top: 8px;
       opacity: 0.8;
     }
+
+    /* 更新 hero 容器样式以匹配其他内容区域 */
+    .hero .container.is-max-desktop {
+      max-width: 960px;  /* 与其他 container.is-max-desktop 保持一致 */
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 更新图片容器样式 */
+    .hero .column.has-text-centered {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 1.5rem;  /* 添加与文字容器相同的内边距 */
+    }
+
+    /* 更新所有主要内容列的宽度 */
+    .column.is-four-fifths,
+    .hero .column.has-text-centered {
+      width: 100%;
+      max-width: 800px;  /* 限制最大宽度 */
+      margin: 0 auto;
+      padding: 0 20px;   /* 添加两侧内边距 */
+    }
+
+    @media screen and (max-width: 768px) {
+      .container.is-max-desktop,
+      .hero .container.is-max-desktop {
+        padding: 0 15px;
+      }
+      
+      .hero .column.has-text-centered,
+      .column.is-four-fifths {  /* 确保所有主要内容列使用相同的宽度 */
+        width: 100%;
+        padding: 0 15px;  /* 移动端时使用相同的内边距 */
+      }
+      
+      .has-text-centered img {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+    }
   </style>
 
 </head>
