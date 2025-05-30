@@ -145,12 +145,13 @@
       }
       
       .has-text-centered {
-        margin: 0 -15px;    /* 抵消容器的内边距 */
-        width: calc(100% + 30px);  /* 补偿内边距 */
+        margin: 0;          /* 移除之前的负margin */
+        width: 100%;        /* 设置为100%宽度 */
+        padding: 0 15px !important;  /* 添加两侧内边距 */
       }
       
       .has-text-centered img {
-        border-radius: 0;   /* 在移动端可以选择移除圆角 */
+        border-radius: 10px;  /* 移动端稍微减小圆角 */
       }
     }
 
