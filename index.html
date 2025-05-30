@@ -48,16 +48,20 @@
       max-width: 960px;
       width: 100%;
       margin: 0 auto;
+      padding: 0 20px;  /* 统一设置容器的内边距 */
     }
 
-    /* 让图片和文本容器宽度一致 */
+    /* 更新图片容器样式 */
+    .has-text-centered {
+      padding: 0 !important;  /* 移除额外的内边距 */
+      width: 100%;           /* 确保容器占满宽度 */
+    }
+
     .has-text-centered img {
-      width: 100%;  /* 图片填充整个容器宽度 */
+      width: 100%;          /* 图片填充整个容器宽度 */
+      max-width: 100%;      /* 确保图片不会溢出 */
       border-radius: 15px;
-    }
-
-    .column.has-text-centered {
-      padding: 0;
+      display: block;       /* 移除图片下方的空隙 */
     }
 
     /* 移除之前的margin设置 */
@@ -136,12 +140,17 @@
 
     /* 响应式调整 */
     @media screen and (max-width: 768px) {
-      .hero .container {
-        padding: 0 15px;
+      .container.is-max-desktop {
+        padding: 0 15px;    /* 移动端稍微减小内边距 */
+      }
+      
+      .has-text-centered {
+        margin: 0 -15px;    /* 抵消容器的内边距 */
+        width: calc(100% + 30px);  /* 补偿内边距 */
       }
       
       .has-text-centered img {
-        max-width: 100%;
+        border-radius: 0;   /* 在移动端可以选择移除圆角 */
       }
     }
 
