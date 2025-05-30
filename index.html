@@ -44,22 +44,20 @@
       max-width: 100%;  /* 确保不会超出父容器 */
     }
 
-    .title.is-3 {
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 1rem;
+    .container.is-max-desktop {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
     }
-    
-    .title.is-3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, #485fc7, #3e8ed0);
-      border-radius: 2px;
+
+    /* 让图片和文本容器宽度一致 */
+    .has-text-centered img {
+      width: 100%;  /* 图片填充整个容器宽度 */
+      border-radius: 15px;
+    }
+
+    .column.has-text-centered {
+      padding: 0;
     }
 
     /* 移除之前的margin设置 */
@@ -69,13 +67,6 @@
 
     .section-content {
       margin-bottom: 0;
-    }
-
-    /* 保持原有的容器宽度限制 */
-    .container.is-max-desktop {
-      max-width: 960px;
-      width: 100%;
-      margin: 0 auto;
     }
 
     /* 让 footer 高度自适应内容 */
@@ -135,6 +126,46 @@
         right: 12px;
       }
     }
+
+    /* 更新logo和文本容器的样式 */
+    .hero .container {
+      max-width: 800px;  /* 限制最大宽度 */
+      margin: 0 auto;
+      padding: 0 20px;   /* 添加两侧内边距 */
+    }
+
+    /* 响应式调整 */
+    @media screen and (max-width: 768px) {
+      .hero .container {
+        padding: 0 15px;
+      }
+      
+      .has-text-centered img {
+        max-width: 100%;
+      }
+    }
+
+    /* 调整标题、作者和按钮之间的间距 */
+    .publication-title {
+      margin-bottom: 1.5rem !important;  /* 标题到作者的间距 */
+    }
+
+    .publication-authors {
+      margin-bottom: 2rem !important;  /* 作者到按钮的间距 */
+    }
+
+    /* 增加按钮和图片之间的间距 */
+    .publication-links {
+      margin-bottom: 3rem !important;  /* 按钮到图片的间距 */
+    }
+
+    /* 小文本样式 */
+    .model-id {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+      opacity: 0.8;
+    }
   </style>
 
 </head>
@@ -187,12 +218,16 @@
                     <span class="lang-en">Try on Volcengine</span>
                     <span class="lang-zh" style="display: none;">在火山引擎上试用</span>
                   </a>
+                  <div class="model-id">
+                    <span class="lang-en">Model ID: doubao-embedding-large-text-250515</span>
+                    <span class="lang-zh" style="display: none;">模型ID：doubao-embedding-large-text-250515</span>
+                  </div>
                 </span>
               </div>
             </div>
 
             <div class="has-text-centered">
-              <img src="./static/images/logo.jpeg" alt="Seed1.5-Embedding Logo" style="max-width: 80%; border-radius: 15px; margin-bottom: 20px;">
+              <img src="./static/images/logo.jpeg" alt="Seed1.5-Embedding Logo" style="border-radius: 15px;">
             </div>
 
           </div>
