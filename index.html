@@ -717,7 +717,7 @@ def encode(
 ):
     if is_query:
         # 使用指令以获取最佳效果，可以自由调整指令以适应不同任务
-        # 要复现测评结果，请参考 https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py 获取每个任务的详细指令
+        # 要复现测评结果，请参考 https://github.com/embeddings-benchmark/mteb/blob/main/mteb/models/seed_models.py 中每个任务的详细指令
         inputs = [
             f"Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery: {x}"
             for x in inputs
@@ -731,7 +731,7 @@ def encode(
     if mrl_dim is not None:
         assert mrl_dim in [2048, 1024, 512, 256]
         embedding = embedding[:, :mrl_dim]
-    # normalize to compute cosine sim
+    # l2 正则以计算 cosine 相似度
     embedding = torch.nn.functional.normalize(embedding, dim=1, p=2).float().numpy()
     return embedding
 
