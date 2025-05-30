@@ -173,28 +173,52 @@ body {
   vertical-align: middle;
 }
 
-.model-column {
+.performance-table th:first-child,
+.performance-table td:first-child {
   min-width: 220px;
   position: sticky;
   left: 0;
-  background-color: white;
   z-index: 1;
 }
 
-.performance-table tbody tr {
-  background-color: #fafafa !important;
+.performance-table th {
+  background-color: white;
 }
 
-.performance-table tbody tr.highlight-row {
-  background-color: #e3f2fd !important;
+.performance-table th:first-child {
+  background-color: white;
 }
 
-.performance-table tbody tr:not(.highlight-row):hover {
-  background-color: #f0f0f0 !important;
+.performance-table tbody tr.highlight-row td {
+  background-color: #e3f2fd;
 }
 
-.performance-table tbody tr.highlight-row:hover {
-  background-color: #bbdefb !important;
+.performance-table tbody tr.highlight-row td:first-child {
+  background-color: #e3f2fd;
+}
+
+.performance-table tbody tr td:first-child {
+  background-color: #fafafa;
+}
+
+.performance-table tbody tr td {
+  background-color: #fafafa;
+}
+
+.performance-table tbody tr:not(.highlight-row):hover td {
+  background-color: #f0f0f0;
+}
+
+.performance-table tbody tr:not(.highlight-row):hover td:first-child {
+  background-color: #f0f0f0;
+}
+
+.performance-table tbody tr.highlight-row:hover td {
+  background-color: #bbdefb;
+}
+
+.performance-table tbody tr.highlight-row:hover td:first-child {
+  background-color: #bbdefb;
 }
 
 .performance-table h3 {
